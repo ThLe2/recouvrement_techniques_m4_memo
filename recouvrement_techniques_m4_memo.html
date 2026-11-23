@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Fiche mémo — Négocier et confirmer l'accord</title>
+<style>
+:root{--prune:#8C1E70;--prune-fonce:#5E1349;--prune-clair:#F4E6EE;--accent:#C77BAA;
+ --vert:#283C28;--gris:#3C3C3C;--gris-moyen:#8A7A85;--filet:#E8DCE5;--creme:#FAF6F8;
+ --ok:#2F7A4F;--ko:#B23B3B;--amb:#B5852A;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--creme);color:var(--gris);
+ font-family:"Nunito","Segoe UI",Helvetica,Arial,sans-serif;font-size:16px;line-height:1.62}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px 60px}
+header.bandeau{background:var(--prune-fonce);color:#fff;padding:18px 0;border-bottom:4px solid var(--accent)}
+header.bandeau .wrap{padding-bottom:0}
+.chapitre{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#EAD3E3}
+.chapitre span{color:var(--accent);margin:0 6px}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:27px;line-height:1.25;margin:8px 0 4px;color:#fff}
+.sous{color:#EAD3E3;font-size:14.5px;margin:0}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:20px;color:var(--prune-fonce);
+ margin:34px 0 0;padding-bottom:8px;border-bottom:2px solid var(--filet)}
+h2 .num{color:var(--accent);margin-right:8px}
+h3{font-size:15px;color:var(--vert);margin:20px 0 8px;letter-spacing:.02em}
+.carte{background:#fff;border:1px solid var(--filet);border-radius:10px;padding:20px 22px;margin:18px 0;
+ box-shadow:0 1px 2px rgba(94,19,73,.05)}
+.enc{background:var(--prune-clair);border-left:5px solid var(--prune);padding:14px 18px;
+ border-radius:0 8px 8px 0;margin:18px 0;font-size:15.2px}
+.enc .t{display:block;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;
+ font-weight:800;color:var(--prune-fonce);margin-bottom:6px}
+.enc.al{background:#FBF4F4;border-left-color:var(--ko)}.enc.al .t{color:var(--ko)}
+.enc.ci{background:#FCF8F0;border-left-color:var(--amb)}.enc.ci .t{color:#8A6418}
+.situ{background:#FCF9FB;border:1px dashed var(--filet);border-radius:8px;padding:16px 18px;margin:16px 0;font-size:15.2px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.duo>div{background:#fff;border:1px solid var(--filet);border-radius:9px;padding:15px 17px;font-size:14.8px}
+.duo .h{font-weight:800;color:var(--prune-fonce);margin-bottom:7px;font-size:14.5px}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.tri>div{background:#fff;border:1px solid var(--filet);border-radius:9px;padding:14px 15px;font-size:14.3px}
+.quad{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+.quad>div{background:#fff;border:1px solid var(--filet);border-radius:9px;padding:12px 13px;font-size:13.6px}
+.quad .h{font-weight:800;color:var(--prune-fonce);margin-bottom:6px;font-size:13px;
+ text-transform:uppercase;letter-spacing:.04em}
+.tri .h{font-weight:800;color:var(--prune-fonce);margin-bottom:6px;font-size:13.5px;
+ text-transform:uppercase;letter-spacing:.05em}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.8px;background:#fff}
+th,td{border:1px solid var(--filet);padding:9px 12px;text-align:left}
+thead th{background:var(--prune-clair);color:var(--prune-fonce);font-size:13.5px}
+tbody th{font-weight:600;color:var(--gris)}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.tot td,tr.tot th{background:#FBF3F8;font-weight:800;color:var(--prune-fonce)}
+.dl{display:inline-flex;align-items:center;gap:9px;background:var(--prune);color:#fff;text-decoration:none;
+ padding:11px 20px;border-radius:8px;font-weight:700;font-size:15px;margin:20px 0 4px}
+.dl:hover{background:var(--prune-fonce)}
+ol.q{padding-left:0;list-style:none;counter-reset:q}
+ol.q>li{margin:16px 0;padding-left:38px;position:relative}
+ol.q>li::before{counter-increment:q;content:counter(q);position:absolute;left:0;top:1px;
+ width:26px;height:26px;border-radius:50%;background:var(--prune-clair);color:var(--prune-fonce);
+ font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+b,strong{color:var(--vert)}
+footer{text-align:center;font-size:12.5px;color:var(--gris-moyen);padding:26px 18px 12px;
+ border-top:1px solid var(--filet);margin-top:44px}
+@media(max-width:860px){.quad{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.duo,.tri,.quad{grid-template-columns:1fr}h1{font-size:22px}}
+@media print{body{background:#fff}.dl{display:none}header.bandeau{background:#5E1349 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
+.chaine{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:16px 0}
+.chaine .ch{background:#fff;border:1px solid var(--filet);border-radius:20px;padding:6px 13px;font-size:13.8px;font-weight:700;color:var(--prune-fonce)}
+.chaine .ch:first-child{background:var(--prune-clair)}
+.chaine .ch:last-child{background:#FBF4F4;color:var(--ko);border-color:#EBCFCF}
+.chaine .fl{color:var(--accent);font-weight:800}
+.dial{margin:14px 0}
+.rep{display:grid;grid-template-columns:120px 1fr;gap:4px 14px;padding:10px 0;border-bottom:1px solid var(--filet)}
+.rep .qui{font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--prune-fonce);padding-top:2px}
+.rep.cli .qui{color:var(--gris-moyen)}
+.rep .txt{font-size:15.2px}
+.rep.cli .txt{font-style:italic}
+.rep .com{grid-column:2;font-size:13.6px;background:#FCF8F0;border-left:4px solid var(--amb);padding:6px 11px;border-radius:0 6px 6px 0;color:#6B4E12}
+@media(max-width:640px){.rep{grid-template-columns:1fr}.rep .com{grid-column:1}}
+@media print{.rep,.enc,table,.tri{break-inside:avoid}h2{break-after:avoid}}
+
+.tl{width:100%;border-collapse:collapse;margin:12px 0;background:#fff;font-size:14.8px}
+.tl td{border:1px solid var(--filet);padding:9px 12px;vertical-align:top}
+.tl td.d{width:120px;font-weight:800;color:var(--prune-fonce);white-space:nowrap}
+.tl td.m{width:34%;background:#FCF9FB;font-size:14px}
+.mail{background:#fff;border:1px solid var(--filet);border-radius:9px;margin:14px 0;overflow:hidden}
+.mail .obj{background:var(--prune-clair);padding:9px 15px;font-size:14px;color:var(--prune-fonce)}
+.mail .cps{padding:12px 16px;font-size:14.8px}
+.mail .cps p{margin:0 0 8px}
+.src{font-size:13px;color:var(--gris-moyen);font-style:italic}
+ul.li{margin:8px 0 8px 2px;padding-left:20px}ul.li li{margin:5px 0}
+@media print{.tl,.mail{break-inside:avoid}}
+</style></head>
+<body>
+<header class="bandeau"><div class="wrap">
+ <div class="chapitre">Recouvrement · Journée 1 <span>/</span> Techniques de recouvrement — Module 4</div><h1>Négocier et confirmer l'accord</h1><p class="sous">Fiche mémo — l'accord gagnant-gagnant, les solutions, l'engagement précis et l'e-mail de confirmation</p>
+</div></header>
+<div class="wrap">
+<a class="dl" href="recouvrement_techniques_m4_memo.pdf" download>⬇ Télécharger la fiche mémo (PDF)</a>
+<h2><span class="num">1 ·</span>Un accord gagnant-gagnant</h2>
+<div class="carte">
+<p>Négocier en recouvrement, c'est trouver un accord où <b>l'entreprise est payée</b> et où <b>le client peut tenir ses engagements</b>. Un accord trop lourd pour le client n'est pas une victoire : c'est le prochain impayé.</p>
+<div class="duo"><div><div class="h"><b>Ce que gagne l'entreprise</b></div>Le paiement de la créance, un dossier qui ne part pas au contentieux, un client conservé.</div><div><div class="h"><b>Ce que gagne le client</b></div>Une solution à sa mesure, la fin des relances, une situation qui ne s'aggrave pas.</div></div>
+</div>
+<h2><span class="num">2 ·</span>Les solutions possibles</h2>
+<div class="carte">
+<table><thead><tr><th>Solution</th><th>Quand la proposer</th><th>Exemple</th></tr></thead><tbody><tr><td><b>Paiement immédiat</b></td><td>Toujours en premier ; il suffit quand le client a les fonds (oubli, incident)</td><td>« Vous pouvez régler les 200 € aujourd'hui par carte ? »</td></tr><tr><td><b>Paiement combiné</b></td><td>Le client peut payer une partie tout de suite, pas la totalité</td><td>« 60 € aujourd'hui, le solde le 29. »</td></tr><tr><td><b>Paiement fractionné</b></td><td>Une baisse de revenus qui permet de payer, mais en plusieurs fois</td><td>« 3 versements de 100 €, le 10 de chaque mois. »</td></tr><tr><td><b>Paiement différé</b></td><td>Le client n'a rien aujourd'hui mais sait quand ses revenus reprennent</td><td>« Premier versement dans un mois, puis deux autres. »</td></tr></tbody></table>
+<div class="enc ci"><span class="t">VOTRE DÉLÉGATION</span>Chaque entreprise fixe ce que le conseiller peut décider seul (nombre de versements, durée, report) et ce qu'il doit transmettre. Au-delà de votre délégation, vous ne promettez rien : vous <b>transmettez</b> et vous dites <b>qui décide et quand</b>.</div>
+<table><thead><tr><th>Situation du client</th><th>Solution adaptée</th></tr></thead><tbody><tr><td>Arriéré de 200 €, chiffre d'affaires en baisse de 5 % seulement</td><td>Paiement immédiat</td></tr><tr><td>Arriéré de 300 €, chiffre d'affaires en baisse de 40 %</td><td>Paiement en 3 fois</td></tr><tr><td>Restaurant fermé deux mois, reprise prévue le mois prochain</td><td>Paiement en 3 fois, avec un premier versement différé</td></tr></tbody></table>
+</div>
+<h2><span class="num">3 ·</span>Obtenir un engagement précis</h2>
+<div class="carte">
+<table><thead><tr><th>Engagement vague</th><th>Engagement précis</th></tr></thead><tbody><tr><td>« Je vais essayer de payer bientôt. »</td><td>« 150 € le 10 décembre, par virement. »</td></tr><tr><td>« Je ferai un effort le mois prochain. »</td><td>« 100 € le 5 janvier, par carte, puis 100 € le 5 février. »</td></tr><tr><td>« Je vous envoie quelque chose dès que possible. »</td><td>« Je règle 80 € aujourd'hui par carte bancaire. »</td></tr></tbody></table>
+<p>Si le client reste vague, questionnez : « Pour que je puisse le noter, quel montant, et à quelle date ? » Vérifiez aussi que la somme proposée correspond à sa capacité réelle — ni trop lourde, ni symbolique.</p>
+<div class="enc al"><span class="t">SENSIBILISER SANS MENACER</span>Expliquez calmement ce qui se passerait si l'accord n'était pas tenu : le dossier reprendrait son cours, avec des suites plus contraignantes. C'est une information, pas une menace : « Si vous ne payez pas, l'huissier passe demain » est proscrit.</div>
+</div>
+<h2><span class="num">4 ·</span>L'e-mail de confirmation</h2>
+<div class="carte">
+<ul class="li"><li><b>Objet</b> clair : « Confirmation de notre accord du 12 mars — contrat n° … »</li><li><b>Rappel de l'échange</b> : la date de l'appel, l'objet.</li><li><b>Montant total</b> dû.</li><li><b>Échéancier</b> : pour chaque versement, le montant, la date et le moyen de paiement.</li><li><b>Contact</b> : comment vous joindre en cas de difficulté.</li><li><b>Formule de politesse</b> professionnelle.</li></ul>
+<div class="mail"><div class="obj"><b>Objet :</b> Confirmation de notre accord du 12 mars — contrat n° 48 215</div><div class="cps"><p>Bonjour Monsieur Boniface,</p><p>Suite à notre entretien téléphonique de ce jour, je vous confirme l'accord trouvé pour régulariser les cotisations en retard de votre contrat multirisque professionnelle, soit 450 €.</p><p>Les versements convenus sont les suivants :</p><p>• 150 € le 12 mars, réglés ce jour par carte bancaire ;</p><p>• 150 € le 12 avril, par prélèvement ;</p><p>• 150 € le 12 mai, par prélèvement.</p><p>Ces versements s'ajoutent à vos cotisations habituelles. Si une difficulté devait se présenter, contactez-moi avant la date prévue : nous chercherons ensemble une solution.</p><p>Nous restons à votre disposition pour toute question et vous remercions de votre confiance.</p><p>Bien cordialement,</p><p>Inès Robert — Service recouvrement des cotisations, Néréis Assurances — 03 20 00 00 00</p></div></div>
+<div class="enc "><span class="t">LE TON</span>Professionnel, courtois et factuel. Pas de jugement sur le retard, pas de menace, aucun frais qui n'a pas été prévu. L'e-mail est envoyé <b>le jour même</b>, au titulaire du contrat, à l'adresse enregistrée dans son dossier.</div>
+</div>
+<h2><span class="num">5 ·</span>Ce qu'il faut retenir</h2>
+<div class="carte">
+<div class="enc "><span class="t">L'ESSENTIEL DU MODULE</span>• Gagnant-gagnant : l'entreprise est payée, le client peut tenir. • Le paiement immédiat d'abord, puis la solution adaptée à la situation, dans votre délégation. • Un engagement, c'est un montant, une date, un moyen. • On informe des suites, on ne menace jamais. • L'e-mail de confirmation, envoyé le jour même, fait foi pour les deux parties.</div>
+</div>
+<footer>TMK Performances - N° Siret : 49841924100027 - Code NAF : 8559A</footer>
+</div>
+</body></html>
